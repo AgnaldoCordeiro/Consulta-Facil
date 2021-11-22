@@ -30,3 +30,23 @@ export async function LoginRequest(
     return null;
   }
 }
+export async function CadastroRequest(
+  name: string,
+  cpf: string,
+  email: string,
+  login: string,
+  password: string
+) {
+  try {
+    const request = await ApiService.post("register", {
+      name,
+      cpf,
+      email,
+      login,
+      password,
+    });
+    return request.data;
+  } catch (error) {
+    return null;
+  }
+}

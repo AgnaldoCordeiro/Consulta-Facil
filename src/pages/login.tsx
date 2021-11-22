@@ -2,6 +2,7 @@ import { Container, Button, Typography, CircularProgress, TextField, Alert } fro
 import { FormElementsContainer } from '@styles/pages/index.style'
 import useIndex from 'data/hooks/pages/useIndex.page'
 import type { NextPage } from 'next'
+import router from 'next/router'
 import React from 'react'
 import PageTitle from 'ui/components/data-display/PageTitle/PageTitle'
 import SafeEnvironment from 'ui/components/feedback/SafeEnvironment/SafeEnvironment'
@@ -27,7 +28,7 @@ const Login: NextPage = () => {
         title={'Informe os dados para acesso'}
       />
       <Container>
-        <FormElementsContainer>
+        <FormElementsContainer>         
           <TextField
             label={'CPF/CNPJ'}
             name={'cpf'}
@@ -36,7 +37,7 @@ const Login: NextPage = () => {
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
             required
-          />
+          />          
           <TextField
             label={'Login'}
             name={'login'}
@@ -62,11 +63,22 @@ const Login: NextPage = () => {
           <Button
             variant={'contained'}
             color={'secondary'}
-            sx={{ width: '220px' }}
+            sx={{ width: '220px', margin: '0.25rem' }}
             type={'submit'}
             onClick={() => buscaLocatario(cpf, login, password)}
           >
             {carregando ? <CircularProgress size={20} /> : 'Continuar'}
+          </Button>
+
+          <Button
+            variant={'contained'}
+            color={'warning'}
+            sx={{ width: '200px', margin: '0.25rem' }}
+            type={'submit'}
+            onClick={() => router.push("/")}
+          >
+            {carregando? <CircularProgress size={20} /> : 'Voltar'}
+
           </Button>
 
         </FormElementsContainer>

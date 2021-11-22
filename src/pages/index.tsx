@@ -1,4 +1,4 @@
-import { Container, Button, CircularProgress } from '@mui/material'
+import { Container, Button, CircularProgress, Box } from '@mui/material'
 import useIndex from 'data/hooks/pages/useIndex.page'
 import type { NextPage } from 'next'
 import router from 'next/router'
@@ -17,13 +17,14 @@ const Home: NextPage = () => {
     <div>
       <SafeEnvironment />
       <PageTitle
-        title={'Sistema de Cadastro'}
+        title={'Sistema de Cadastro '}
       />
       <Container>
+        <Box sx={{textAlign: 'center'}}> 
         <Button
         variant={'contained'}
             color={'secondary'}
-            sx={{ width: '220px' }}
+          sx={{ width: '220px', margin: '0.75rem'}}
           type={'submit'}
           onClick={() => router.push("/login")}
         >
@@ -32,12 +33,13 @@ const Home: NextPage = () => {
         <Button
         variant={'contained'}
             color={'secondary'}
-            sx={{ width: '220px' }}
+            sx={{ width: '220px', margin: '0.75rem' }}
           type={'submit'}
           onClick={() => router.push("/cadastro")}
         >
           {carregando ? <CircularProgress size={20} /> : 'Cadastro'}
         </Button>
+        </Box>
         
       </Container>
 

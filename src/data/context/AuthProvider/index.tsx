@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { IAuthProvider, IContext, IUser } from "./types";
-import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./util";
+import { CadastroRequest, getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./util";
 
 
 export const AuthContext = createContext<IContext>({} as IContext)
@@ -24,7 +24,10 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
         setUser(payload);
         setUserLocalStorage(payload)
-    }
+    } 
+    function register(name: string, cpf: string, email: string, login: string, password: string) {
+         CadastroRequest(name, cpf, email, login, password);
+    } 
 
     function logout(): void {
         setUser(null);
@@ -32,7 +35,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     }
 
     return (
-        <AuthContext.Provider value={{ ...user, authenticate, logout }}>
+        <AuthContext.Provider value={{ ...user, authenticate, logout, register }}>
             {children}
         </AuthContext.Provider>
     )
