@@ -6,6 +6,7 @@ import router from 'next/router'
 import React from 'react'
 import PageTitle from 'ui/components/data-display/PageTitle/PageTitle'
 import SafeEnvironment from 'ui/components/feedback/SafeEnvironment/SafeEnvironment'
+import TextFieldMask from 'ui/components/inputs/TextFieldMask/TextFieldMask'
 
 
 const Login: NextPage = () => {
@@ -29,8 +30,9 @@ const Login: NextPage = () => {
       />
       <Container>
         <FormElementsContainer>         
-          <TextField
-            label={'CPF/CNPJ'}
+          <TextFieldMask
+            mask={'999.999.999-99'}
+            label={'Cpf'}
             name={'cpf'}
             fullWidth
             variant={'outlined'}

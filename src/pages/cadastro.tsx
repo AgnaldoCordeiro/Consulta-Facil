@@ -6,6 +6,7 @@ import router from 'next/router'
 import React from 'react'
 import PageTitle from 'ui/components/data-display/PageTitle/PageTitle'
 import SafeEnvironment from 'ui/components/feedback/SafeEnvironment/SafeEnvironment'
+import TextFieldMask from 'ui/components/inputs/TextFieldMask/TextFieldMask'
 
 
 const Cadastro: NextPage = () => {
@@ -22,6 +23,7 @@ const Cadastro: NextPage = () => {
     setPassword,
     cadastroLocatario,
     erro,
+    success,
     carregando,
   } = useCadastro();
 
@@ -42,8 +44,9 @@ const Cadastro: NextPage = () => {
             onChange={(e) => setName(e.target.value)}
             required
           />
-           <TextField
-            label={'CPF/CNPJ'}
+          <TextFieldMask
+            mask={'999.999.999-99'}
+            label={'Cpf'}
             name={'cpf'}
             fullWidth
             variant={'outlined'}
@@ -79,9 +82,9 @@ const Cadastro: NextPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
-
+          />          
           {erro && <Typography color={'error'}>{erro}</Typography>}
+          {erro || <Typography color={'success'}>{success}</Typography>}
            <Button
             variant={'contained'}
             color={'secondary'}
@@ -89,7 +92,7 @@ const Cadastro: NextPage = () => {
             type={'submit'}
             onClick={() => cadastroLocatario(name, cpf, email, login, password)}
           >
-            {carregando ? <CircularProgress size={20} /> : 'Cadastrar'}
+            {carregando ? <CircularProgress size={20} /> : 'Cadastrar'}            
           </Button>
 
           <Button
