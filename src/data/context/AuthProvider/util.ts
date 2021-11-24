@@ -46,13 +46,12 @@ export async function CadastroRequest(
       login,
       password,
     });
-    alert("Registrado com sucesso!!!");
+    alert("Successfully Registered User");
     router.push("/cadastro");
     return request.data;
   } catch (error) {
     alert("User already exists");
     router.push("/cadastro");
-    console.log("Whoops! Houve um erro.", error);
     return error;
   }
 }
