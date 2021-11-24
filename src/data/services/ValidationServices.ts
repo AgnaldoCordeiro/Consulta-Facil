@@ -1,3 +1,5 @@
+import { ApiService } from "./ApiServices";
+
 export const ValidationService = {
   cpf(cpf = ""): boolean {
     return cpf.replace(/\D/g, "").length === 11;

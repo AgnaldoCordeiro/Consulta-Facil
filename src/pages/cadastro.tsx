@@ -22,7 +22,7 @@ const Cadastro: NextPage = () => {
     setLogin,
     setPassword,
     cadastroLocatario,
-    erro,
+    error,
     success,
     carregando,
   } = useCadastro();
@@ -83,8 +83,8 @@ const Cadastro: NextPage = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />          
-          {erro && <Typography color={'error'}>{erro}</Typography>}
-          {erro || <Typography color={'success'}>{success}</Typography>}
+          {success && <Typography color={'success'}> {success}</Typography>}
+          {error && <Typography color={'error'}>{error}</Typography>}
            <Button
             variant={'contained'}
             color={'secondary'}

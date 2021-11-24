@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import router from "next/router";
 import { useAuth } from "data/context/AuthProvider/useAuth";
 import { ValidationService } from "data/services/ValidationServices";
@@ -12,7 +12,7 @@ export default function useCadastro() {
     [email, setEmail] = useState(""),
     [login, setLogin] = useState(""),
     [password, setPassword] = useState(""),
-    [erro, setErro] = useState(""),
+    [error, setErro] = useState(""),
     [success, setSuccess] = useState(""),
     [carregando, setCarregando] = useState(false);
 
@@ -30,13 +30,10 @@ export default function useCadastro() {
   ) {
     setCarregando(true);
     setErro("");
-
     try {
       await auth.register(name, cpf.replace(/\D/g, ""), email, login, password);
-      setSuccess("Registrado com sucesso!!!");
       setCarregando(false);
     } catch (error) {
-      setErro("Informação Invalida, por favor conferir os campos");
       setCarregando(false);
     }
     limparInputs();
@@ -53,7 +50,7 @@ export default function useCadastro() {
     setLogin,
     setPassword,
     cadastroLocatario,
-    erro,
+    error,
     success,
     carregando,
   };

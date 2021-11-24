@@ -5,6 +5,7 @@ const token = "b2ad9e0026f2048483d023ab72dec9";
 
 export const ApiService = axios.create({
   baseURL: url,
+  timeout: 1000 * 5,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

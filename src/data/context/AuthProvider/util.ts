@@ -1,4 +1,5 @@
 import { ApiService } from "data/services/ApiServices";
+import router from "next/router";
 import { IUser } from "./types";
 
 export function setUserLocalStorage(user: IUser | null) {
@@ -45,8 +46,13 @@ export async function CadastroRequest(
       login,
       password,
     });
+    alert("Registrado com sucesso!!!");
+    router.push("/cadastro");
     return request.data;
   } catch (error) {
-    return null;
+    alert("User already exists");
+    router.push("/cadastro");
+    console.log("Whoops! Houve um erro.", error);
+    return error;
   }
 }
